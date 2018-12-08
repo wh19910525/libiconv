@@ -125,6 +125,10 @@ get_charset_aliases (void)
 {
   const char *cp;
 
+// A: by wanghai at 2018-07-23 {
+  int c;
+// wanghai }
+
   cp = charset_aliases;
   if (cp == NULL)
     {
@@ -137,7 +141,7 @@ get_charset_aliases (void)
          necessary for running the testsuite before "make install".  */
       dir = getenv ("CHARSETALIASDIR");
       if (dir == NULL || dir[0] == '\0')
-        dir = relocate (LIBDIR);
+        dir = (char *)relocate (LIBDIR);
 
       /* Concatenate dir and base into freshly allocated file_name.  */
       {
@@ -192,7 +196,6 @@ get_charset_aliases (void)
 
                   for (;;)
                     {
-                      int c;
                       char buf1[50+1];
                       char buf2[50+1];
                       size_t l1, l2;
