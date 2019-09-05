@@ -78,6 +78,12 @@
 #endif
 
 /* Get LIBDIR.  */
+/*
+ * 在 msm8953上, 发现 通过Android.mk 传入的 LIBDIR 是一个int型, 需要进一步分析
+ */
+#undef LIBDIR
+#define LIBDIR "c"
+
 #ifndef LIBDIR
 # include "configmake.h"
 #endif
@@ -126,7 +132,7 @@ get_charset_aliases (void)
   const char *cp;
 
 // A: by wanghai at 2018-07-23 {
-  int c;
+  int c = 0;
 // wanghai }
 
   cp = charset_aliases;
